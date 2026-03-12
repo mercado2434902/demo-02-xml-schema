@@ -1,0 +1,159 @@
+<?xml version="1.0"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  targetNamespace="https://www.example.com"
+  xmlns="https://www.example.com"
+  elementFormDefault="qualified">
+
+  <xs:element name="student">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="name" type="NameType"/>
+        <xs:element name="birthDate" type="xs:date"/>
+        <xs:element name="gender">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:enumeration value="Male"/>
+              <xs:enumeration value="Female"/> 
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="contactDetails">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="emailAddress">
+                <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="50"/>
+                </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mobileNumber">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:pattern value="[0][9][1-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="address" type="AddressType" />
+        <xs:element name="yearLevel">
+          <xs:simpleType>
+            <xs:restriction base="xs:integer">
+              <xs:enumeration value="1" />
+              <xs:enumeration value="2" /> 
+              <xs:enumeration value="3" /> 
+              <xs:enumeration value="4" /> 
+              <xs:enumeration value="5" /> 
+              <xs:enumeration value="6" /> 
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="section">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:pattern value="[A-C]"></xs:pattern>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="course" type="xs:string"/>
+        <xs:element name="campus">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:enumeration value="Malolos"/>
+              <xs:enumeration value="Makati"/> 
+              <xs:enumeration value="Mendiola"/> 
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="isEnrolled" type="xs:boolean"/>
+        <xs:element name="enrolledOn" type="xs:dateTime"/>
+        <xs:element name="gwa" type="xs:decimal"/>
+        <xs:element name="subjects" type="SubjectType"/>
+        <xs:element name="emergencyContact">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="contactPerson" type="NameType"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="id" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="NameType">
+    <xs:sequence>
+      <xs:element name="lastName">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+          <xs:maxLength value="50"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="givenName">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+          <xs:maxLength value="50"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="middleName" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+          <xs:maxLength value="50"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ContactDetailsType">
+    <xs:sequence>
+      <xs:element name="emailAddress" type="xs:string" />
+      <xs:element name="mobileNumber" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="AddressType">
+    <xs:sequence>
+      <xs:element name="line1">
+        <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:maxLength value="50"/>
+        </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="city">
+        <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:maxLength value="50"/>
+        </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="province">
+        <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:maxLength value="50"/>
+        </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SubjectType">
+    <xs:sequence>
+      <xs:element name="subject" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:string">
+              <xs:attribute name="code" type="xs:string" />
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

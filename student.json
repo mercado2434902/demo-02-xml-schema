@@ -1,0 +1,30 @@
+{
+  "name": {
+    "lastName": "Stark",
+    "givenName": "Tony",
+    "middleName": null
+  },
+  "birthDate": "1992-10-09",
+  "gender": "Male",
+  "contactDetails": {
+    "emailAddress": "tony.stark@email.com",
+    "mobileNumber": "09171234567"
+  },
+  "address": {
+    "line1": "#01 Sample St.",
+    "city": "City of Malolos",
+    "province": "Bulacan"
+  },
+  "yearLevel": 2,
+  "course": "Information Technology",
+  "gwa": 1.85,
+  "isEnrolled": true,
+  "dateEnrolled": "2025-01-05T09:30:00+08:00",
+  "subjects": {
+    "subject": [
+      "System Integration 1",
+      "Networking 2"
+    ]
+  }
+}
+
